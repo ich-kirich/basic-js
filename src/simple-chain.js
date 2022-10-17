@@ -8,7 +8,8 @@ const chainMaker = {
   temp : '',
   
   getLength() {
-    return this.temp.split('~~').length;
+    let len = this.temp.split('~~')
+    return len.length;
   },
   addLink(value) {
     if (this.temp !== '') {
@@ -20,7 +21,7 @@ const chainMaker = {
     }
   },
   removeLink(position) {
-    if (!Number.isInteger(position) || (position <= 0) || position > this.getLength()) {
+    if ((position <= 0) || position > this.getLength() || !Number.isInteger(position)) {
       this.temp = ''
       throw new Error("You can't remove incorrect link!")
     }
